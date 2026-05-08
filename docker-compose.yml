@@ -1,0 +1,44 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:15-alpine
+    container_name: car_rental_db
+    restart: always
+    environment:
+      POSTGRES_DB: car_rental
+      POSTGRES_USER: car_user
+      POSTGRES_PASSWORD: car_password_123
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U car_user -d car_rental"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  web:
+    build:
+      context: .
+      dockerfile: docker/django/Dockerfile
+    container_name: car_rental_web
+    restart: always
+    volumes:
+      - ./app:/app
+    ports:
+      - "8000:8000"
+    environment:
+      DEBUG: '1'
+      DB_NAME: car_rental
+      DB_USER: car_user
+      DB_PASSWORD: car_password_123
+      DB_HOST: db
+      DB_PORT: 5432
+    depends_on:
+      db:
+        condition: service_healthy
+
+volumes:
+  postgres_data:
