@@ -12,9 +12,23 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 import os
 from pathlib import Path
 
+from dotenv import load_dotenv
+load_dotenv()  # загружает переменные из .env
+
+EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
+DEFAULT_FROM_EMAIL = f'Надёжное Колесо <{EMAIL_HOST_USER}>'
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+load_dotenv(os.path.join(BASE_DIR, '.env'))   # ищем в корне проекта
+# Static files (CSS, JavaScript, Images)
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
+# Media files (user-uploaded files)
+MEDIA_URL = '/media/'                      # URL для доступа к фото
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')  # папка на диске, где хранятся фото
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
@@ -36,7 +50,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    
     'rest_framework',
     'drf_yasg',
     'corsheaders',
@@ -44,6 +57,8 @@ INSTALLED_APPS = [
     'cars',  # ← ЭТА СТРОКА ДОЛЖНА БЫТЬ
     'accounts',
     'bookings',
+    'django_filters',
+
 ]
 
 MIDDLEWARE = [
@@ -132,3 +147,8 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+# Email settings (для разработки — письма в консоль)
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
