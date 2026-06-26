@@ -33,3 +33,17 @@ class Car(models.Model):
     
     def __str__(self):
         return f"{self.brand} {self.model} ({self.license_plate})"
+    
+class CarImage(models.Model):
+    car = models.ForeignKey(Car, on_delete=models.CASCADE, related_name='images')
+    image = models.ImageField(upload_to='cars/', verbose_name='Изображение')
+    order = models.PositiveIntegerField(default=0, verbose_name='Порядок')
+    uploaded_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ['order', 'uploaded_at']
+        verbose_name = 'Изображение'
+        verbose_name_plural = 'Изображения'
+
+    def __str__(self):
+        return f"{self.car} - {self.order}"

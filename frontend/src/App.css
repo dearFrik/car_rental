@@ -1,0 +1,554 @@
+/* Подключение шрифта */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+:root {
+  --primary: #2d1b69;
+  --primary-light: #4a2d8a;
+  --primary-dark: #1a0f3f;
+  --success: #198754;
+  --danger: #dc3545;
+  --light-bg: #f8f9fa;
+  --shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+  --border-radius: 16px;
+}
+
+* {
+  font-family: 'Inter', sans-serif;
+}
+
+body {
+  background-color: #f4f6f9;
+  color: #1a1a2e;
+}
+
+/* Навигация */
+.navbar {
+  background: white !important;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+  padding: 16px 0;
+}
+.navbar-brand {
+  font-weight: 800;
+  font-size: 1.4rem;
+  color: var(--primary) !important;
+  letter-spacing: -0.5px;
+}
+.navbar-brand i {
+  margin-right: 8px;
+}
+.nav-link {
+  font-weight: 500;
+  color: #333 !important;
+  transition: color 0.2s;
+}
+.nav-link:hover {
+  color: var(--primary) !important;
+}
+
+/* Кнопки */
+.btn-primary {
+  background: var(--primary);
+  border: none;
+  border-radius: 50px;
+  padding: 10px 28px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+.btn-primary:hover {
+  background: var(--primary-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(45, 27, 105, 0.3);
+}
+.btn-outline-primary {
+  border-color: var(--primary);
+  color: var(--primary);
+  border-radius: 50px;
+}
+.btn-outline-primary:hover {
+  background: var(--primary);
+  color: white;
+}
+.btn-success {
+  border-radius: 50px;
+  font-weight: 600;
+}
+
+/* Hero секция */
+.hero-section {
+  min-height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  border-radius: 0 0 40px 40px;
+  margin-top: -24px;
+  padding: 60px 20px;
+  color: white;
+}
+.hero-section h1 {
+  font-size: 3.8rem;
+  font-weight: 800;
+  letter-spacing: -1px;
+  margin-bottom: 1rem;
+}
+.hero-section p {
+  font-size: 1.25rem;
+  opacity: 0.8;
+  margin-bottom: 2rem;
+}
+.hero-btn {
+  padding: 14px 48px;
+  font-size: 1.1rem;
+  border-radius: 50px;
+  background: white;
+  color: var(--primary);
+  font-weight: 700;
+  transition: all 0.3s;
+}
+.hero-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 30px rgba(255, 255, 255, 0.2);
+  background: white;
+  color: var(--primary-dark);
+}
+
+/* Карточки автомобилей (премиум) */
+.car-card-premium {
+  background: white;
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.car-card-premium:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
+}
+.car-image-wrapper {
+  position: relative;
+  height: 220px;
+  overflow: hidden;
+  background: #e9ecef;
+}
+.car-image-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s;
+}
+.car-card-premium:hover .car-image-wrapper img {
+  transform: scale(1.03);
+}
+.car-badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 4px 14px;
+  border-radius: 50px;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  backdrop-filter: blur(4px);
+}
+.car-info {
+  padding: 20px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+.car-info h3 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+.car-specs {
+  display: flex;
+  gap: 16px;
+  color: #6c757d;
+  font-size: 0.85rem;
+  margin-bottom: 12px;
+}
+.car-price-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: auto;
+  padding-top: 12px;
+  border-top: 1px solid #f1f3f5;
+}
+.car-price-section .price {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--primary);
+}
+.car-price-section .price-period {
+  color: #6c757d;
+  font-size: 0.85rem;
+  font-weight: 400;
+}
+
+/* Детальная страница */
+.detail-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  padding: 20px 0;
+}
+.detail-gallery {
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+.detail-gallery img {
+  width: 100%;
+  display: block;
+}
+.detail-price {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--primary);
+}
+.detail-price span {
+  font-size: 1rem;
+  font-weight: 400;
+  color: #6c757d;
+}
+.detail-specs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin: 20px 0 30px;
+}
+.detail-spec-item {
+  background: #f8f9fa;
+  padding: 12px 16px;
+  border-radius: 8px;
+}
+.detail-spec-item span {
+  display: block;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  color: #6c757d;
+  letter-spacing: 0.5px;
+}
+.detail-spec-item strong {
+  font-size: 1rem;
+}
+.book-btn {
+  padding: 14px 48px;
+  border-radius: 50px;
+  font-weight: 600;
+}
+
+/* Бронирование */
+.booking-container {
+  max-width: 600px;
+  margin: 0 auto;
+  background: white;
+  padding: 32px;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+}
+.booking-summary {
+  text-align: center;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #e9ecef;
+  margin-bottom: 20px;
+}
+.booking-summary h3 {
+  font-weight: 700;
+}
+.booking-summary .price {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--primary);
+}
+.availability-badge {
+  padding: 12px;
+  border-radius: 8px;
+  text-align: center;
+  margin: 16px 0;
+  font-weight: 600;
+}
+.availability-badge.available {
+  background: #d4edda;
+  color: #155724;
+}
+.availability-badge.unavailable {
+  background: #f8d7da;
+  color: #721c24;
+}
+
+/* Профиль */
+.profile-card {
+  background: white;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+  padding: 24px;
+  margin-bottom: 24px;
+}
+.profile-card h5 {
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+.booking-item {
+  border-left: 4px solid var(--primary);
+  margin-bottom: 12px;
+  padding: 12px 16px;
+  background: #fafbfc;
+  border-radius: 8px;
+}
+.booking-item.status-pending { border-left-color: #ffc107; }
+.booking-item.status-confirmed { border-left-color: #198754; }
+.booking-item.status-cancelled { border-left-color: #dc3545; }
+.booking-item .badge {
+  font-weight: 500;
+}
+
+/* Футер */
+.footer {
+  margin-top: 60px;
+  padding: 24px 0;
+  background: white;
+  border-top: 1px solid #e9ecef;
+}
+
+/* Адаптив */
+@media (max-width: 768px) {
+  .hero-section h1 {
+    font-size: 2.2rem;
+  }
+  .detail-container {
+    grid-template-columns: 1fr;
+  }
+  .car-detail-specs {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.filter-panel {
+  background: white;
+  padding: 20px;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+  margin-bottom: 24px;
+}
+.filter-panel .form-control,
+.filter-panel .form-select {
+  border-radius: 8px;
+  border: 1px solid #e9ecef;
+  padding: 10px 14px;
+}
+.filter-panel .form-control:focus,
+.filter-panel .form-select:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(45,27,105,0.1);
+}
+.filter-panel .form-check-input:checked {
+  background-color: var(--primary);
+  border-color: var(--primary);
+}
+
+.booking-item .btn-outline-danger {
+  font-size: 0.75rem;
+  padding: 2px 12px;
+}
+
+.review-item {
+  border-bottom: 1px solid #e9ecef;
+  padding: 16px 0;
+}
+.review-item:last-child {
+  border-bottom: none;
+}
+
+.stat-card {
+  background: white;
+  padding: 20px;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+  text-align: center;
+}
+.stat-card h3 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 0;
+}
+.stat-card span {
+  color: #6c757d;
+  font-weight: 500;
+}
+.admin-nav .btn {
+  border-radius: 50px;
+}
+
+.car-image-count {
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+  background: rgba(0,0,0,0.6);
+  color: white;
+  padding: 2px 10px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  backdrop-filter: blur(4px);
+}
+
+/* ===== Премиум-футер ===== */
+.footer-premium {
+  background: #1a1a2e;
+  color: #e0e0e0;
+  padding: 40px 0 20px;
+  margin-top: 60px;
+  border-top: 1px solid rgba(255,255,255,0.05);
+}
+
+.footer-premium .footer-heading {
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: #fff;
+  margin-bottom: 16px;
+  letter-spacing: 0.5px;
+}
+
+.footer-premium .footer-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-premium .footer-list li {
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  font-size: 0.95rem;
+  color: #b0b0b0;
+}
+
+.footer-premium .footer-list li i {
+  width: 20px;
+  text-align: center;
+  color: #6c63ff;
+}
+
+.footer-premium .footer-list a {
+  color: #b0b0b0;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.footer-premium .footer-list a:hover {
+  color: #fff;
+}
+
+/* Соцсети */
+.social-links {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.social-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.06);
+  color: #b0b0b0;
+  font-size: 1.2rem;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.social-link:hover {
+  transform: translateY(-3px);
+  color: #fff;
+}
+
+.social-link.telegram:hover { background: #0088cc; }
+.social-link.youtube:hover { background: #ff0000; }
+.social-link.vk:hover { background: #4c75a3; }
+.social-link.tiktok:hover { background: #000; }
+
+/* Нижняя часть футера */
+.footer-bottom {
+  border-top: 1px solid rgba(255,255,255,0.06);
+  margin-top: 30px;
+  padding-top: 20px;
+  text-align: center;
+  font-size: 0.85rem;
+  color: #7a7a8a;
+}
+
+.footer-bottom p {
+  margin-bottom: 6px;
+}
+
+.accordion-body {
+  white-space: pre-line;
+}
+
+/* Кастомный аккордеон для страницы Условия */
+.custom-accordion {
+  border: 1px solid #e9ecef;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.accordion-item-custom {
+  border-bottom: 1px solid #e9ecef;
+}
+
+.accordion-item-custom:last-child {
+  border-bottom: none;
+}
+
+.accordion-header-custom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 20px;
+  background: #fff;
+  cursor: pointer;
+  transition: background 0.2s;
+  font-weight: 500;
+  color: #1a1a2e;
+}
+
+.accordion-header-custom:hover {
+  background: #f8f9fa;
+}
+
+.accordion-icon {
+  font-size: 1.5rem;
+  font-weight: 300;
+  color: #6c63ff;
+  transition: transform 0.3s;
+  user-select: none;
+  margin-left: 16px;
+}
+
+.accordion-body-custom {
+  padding: 20px 20px 24px;
+  background: #fafbfc;
+  color: #333;
+  line-height: 1.6;
+  border-top: 1px solid #e9ecef;
+}
+
+.accordion-body-custom p {
+  margin-bottom: 0.5rem;
+}
+
+.accordion-body-custom p:last-child {
+  margin-bottom: 0;
+}
